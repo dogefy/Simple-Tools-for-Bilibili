@@ -10,8 +10,8 @@ headers = {
 def get_uid(name):
     id = []
     url = 'https://search.bilibili.com/upuser?keyword={}'.format(name)
-    get_page = requests.get(url)
-    soup = bs4.BeautifulSoup(get_page.content, 'lxml')
+    page = requests.get(url)
+    soup = bs4.BeautifulSoup(page.content, 'lxml')
     uid_pattern = re.compile('space.bilibili.com/([0-9]+)')
     uid_match = uid_pattern.findall(str(soup.select('.title')))
     if len(uid_match) == 0:
